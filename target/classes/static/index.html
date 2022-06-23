@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head> <title> Picas y Fijas!</title></head>
+    <body>
+        <a href="/nada"> nada</a>
+        <h1>
+            <form action="/hello">
+                <label for="fname"> Ingrese 4 numeros del 1 al 9 separados por coma: </label><br>
+                <input type="text" id="lista" name="lista" value=""><br>
+                <input type="button" value="Submit" onclick="lectura(lista)">
+            </form>
+            <div id="postrespmsg"></div>
+            <script>
+                function lectura(lista){
+                        let file = "/index?lista=" + lista.value
+
+                        fetch (file,{method:'POST'})
+                            .then(x => x.text())
+                            .then(y => document.getElementById("postrespmsg").innerHTML = y)
+                    }
+            </script>
+        </h1>
+        <h2>
+            Puntuación:
+        </h2>
+    </body>
+</html>
