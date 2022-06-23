@@ -20,17 +20,10 @@ public class WebSiteController {
         PicasyFijas.getInstance();
     }
 
-    @RequestMapping(
-            value = "/status",
-            method = RequestMethod.GET,
-            produces = "application/json"
-    )
-    public String status() {
-        return "{\"status\":\"Greetings from Spring Boot. " +
-                java.time.LocalDate.now() + ", " +
-                java.time.LocalTime.now() +
-                ". " + "The server is Runnig!\"}";
-    }
+    /**
+     *  Metodo get para saber la cadena oculta que debe encontrar el jugador
+     * @return
+     */
     @GetMapping("/index")
     public String cadenaFinal(){
         String cadenaReal = "";
@@ -39,6 +32,12 @@ public class WebSiteController {
         }
         return cadenaReal;
     }
+    /**
+     * Metodo POST para la lectura del usuario y además decir cuantas picas y fijas 
+     *  a encontrado dependiendo de la lista enviada
+     * @param lista
+     * @return
+     */
     @PostMapping("/index")
     public String lecturaDeEntrada(@RequestParam(value = "lista", defaultValue = "0,0,0,0") String lista){
         PicasyFijas.getInstance().convertir(lista);

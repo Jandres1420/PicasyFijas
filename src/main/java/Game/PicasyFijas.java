@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * Clase encargada del back del juego PicasyFijas
+ */
 public class PicasyFijas {
     private List<Integer> numeroR;
     private static  PicasyFijas _instance = new PicasyFijas();
@@ -12,11 +14,18 @@ public class PicasyFijas {
     public static PicasyFijas getInstance(){
         return _instance;
     }
-
+    /**
+     * Singleton que genera la lista de numeros randoms que la persona
+     * tiene que encontrar con picas y fijas
+     */
     public PicasyFijas(){
         generateRandoms();
     }
 
+    /**
+     * convertir el metodo GET de String a un arreglo de Integer
+     * @param input
+     */
     public void convertir(String input){
 
         String[] numeros = input.split(",");
@@ -31,7 +40,9 @@ public class PicasyFijas {
         
         
     }
-
+    /**
+    *Genera la lista de numeros Randoms que tiene que descubrir el jugador 
+    */
     public void generateRandoms(){
         numeroR = new ArrayList<Integer>();
         Random random = new Random();
@@ -44,7 +55,11 @@ public class PicasyFijas {
         }        
         numeroR.forEach(i->System.out.println(i));
     }
-
+    /**
+     * Clase que encuentra cuantas fijas hay dependiendo de la lista pasada
+     * @param userList
+     * @return
+     */
     public int numeroDeFijas(ArrayList<Integer> userList){ 
         fijas = 0;
         for(int i = 0; i<userList.size();i++){
@@ -56,6 +71,11 @@ public class PicasyFijas {
         return fijas;
     }
 
+    /**
+     * Clase que encuentra las fijas segun la lista pasada
+     * @param userList
+     * @return
+     */
     public int numeroDePicas(List<Integer> userList){
         picas = 0;
         for(int i = 0; i<userList.size();i++){
