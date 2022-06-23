@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head> <title> Picas y Fijas!</title></head>
+    <head> <title> Picas y Fijas!</title>
+        <link rel="stylesheet" href="index.css"/>
+        <script src="index.js"></script>
+    </head>
     <body>
-        <a href="/nada"> nada</a>
-        <h1>
+        <h4 id = "titulo"> PICAS Y FIJAS! </h4>
             <form action="/hello">
                 <label for="fname"> Ingrese 4 numeros del 1 al 9 separados por coma: </label><br>
                 <input type="text" id="lista" name="lista" value=""><br>
                 <input type="button" value="Submit" onclick="lectura(lista)">
             </form>
             <div id="postrespmsg"></div>
-            <script>
-                function lectura(lista){
-                        let file = "/index?lista=" + lista.value
-
-                        fetch (file,{method:'POST'})
-                            .then(x => x.text())
-                            .then(y => document.getElementById("postrespmsg").innerHTML = y)
-                    }
-            </script>
+        
         </h1>
         <h2>
-            Puntuación:
+            Descubrir la cadena: 
         </h2>
+        <button id = "boton" type="button" onclick="loadGetMsg()">Actualiza</button>
+        <div id="getrespmsg" ></div>
+
+        <h3 >
+            numero de intentos restantes:
+        </h3>
+        <input type="button" value="+" onclick="document.getElementById('mostrador').value=parseInt(document.getElementById('mostrador').value+0)+1)" />
+
     </body>
+
+    
 </html>
